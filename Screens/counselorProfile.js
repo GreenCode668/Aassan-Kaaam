@@ -16,20 +16,22 @@ class Profile extends Component {
     };
   }
 
-  componentWillMount() {
-    this.setState({
-      user: this.props.auth.category
-    });
-    console.warn(this.props.auth.category[0].name);
-  }
+
+  mapView = () => {
+    this.props.navigation.navigate("Map");
+  };
 
   render() {
     return (
       <ScrollView style={styles.root}>
         <View style={[styles.header, styles.bordered]}>
           <Avatar img={img} rkType="big" />
-          <RkText rkType="header2">{this.props.auth.category[0].name}</RkText>
-          <RkText rkType="header2">{this.props.auth.category[0].email}</RkText>
+          <RkText rkType="header2">
+            {this.props.auth.currentprofile.name}
+          </RkText>
+          <RkText rkType="header2">
+            {this.props.auth.currentprofile.email}
+          </RkText>
         </View>
         <View style={[styles.userInfo, styles.bordered]}>
           <View style={styles.section}>
@@ -52,7 +54,11 @@ class Profile extends Component {
           </View>
         </View>
         <View style={styles.buttons}>
-          <RkButton style={styles.button} rkType="clear link">
+          <RkButton
+            style={styles.button}
+            rkType="clear link"
+            onPress={this.mapView}
+          >
             HIRE ME
           </RkButton>
           <View style={styles.separator} />

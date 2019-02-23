@@ -17,17 +17,18 @@ import Dashboard from "../Screens/Dashboard";
 import SignUp from "../Screens/SignUp";
 import CategoryViewScreen from "../Screens/CategoryView";
 import Profile from "../Screens/counselorProfile";
-
+import MapScreen from "../Screens/MapView";
+import OrderConfirm from "../Screens/OrderConfirm";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 // import { createMaterialTopNavigator , createDrawerNavigator, createAppContainer} from 'react-navigation'
 
 const stackNavigator = createStackNavigator({
-  Home: {
-    screen: HomeScreen
-  },
   Login: {
     screen: LoginScreen
+  },
+  Home: {
+    screen: HomeScreen
   },
 
   Dashboard: {
@@ -41,6 +42,13 @@ const stackNavigator = createStackNavigator({
   },
   CounselorProfile: {
     screen: Profile
+  },
+
+  OrderConfirm: {
+    screen: OrderConfirm
+  },
+  Map: {
+    screen: MapScreen
   }
 });
 

@@ -44,14 +44,15 @@ class CategoryViewScreen extends Component {
   );
 
   componentWillReceiveProps(nextProps) {
-    console.warn("cateogry", nextProps.auth.category);
-    this.setState({
-      user: nextProps.auth.category
-    });
+    if (nextProps.auth.currentprofile) {
+      this.props.navigation.navigate("CounselorProfile");
+    }
   }
-  openProfile = ()=>{
-    this.props.navigation.navigate('CounselorProfile')
-  }
+  openProfile = currentProfile => {
+    console.log(currentProfile);
+    this.props.ViewProfile(currentProfile);
+    /* this.props.navigation.navigate("CounselorProfile"); */
+  };
   render() {
     return (
       <View style={styles.root} enableEmptySections>
@@ -67,14 +68,17 @@ class CategoryViewScreen extends Component {
         </View>
         <View style={styles.separator} />
 
-        {this.state.user.map((v, i) => {
+        {this.props.auth.data.map((v, i) => {
           return (
-            <TouchableOpacity onPress={this.openProfile}>
-              <View style={styles.container}>
-                <Avatar rkType="circle" style={styles.avatar} img={img} />
-                <RkText>{v.name}</RkText>
-              </View>
-            </TouchableOpacity>
+            <View>
+              <TouchableOpacity onPress={() => this.openProfile(v)}>
+                <View style={styles.container}>
+                  <Avatar rkType="circle" style={styles.avatar} img={img} />
+                  <RkText>{v.name}</RkText>
+                </View>
+                <View style={styles.separator} />
+              </TouchableOpacity>
+            </View>
           );
         })}
       </View>
@@ -119,7 +123,11 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    ViewProfile: data => {
+      dispatch(authActions.ViewProfile(data));
+    }
+  };
 };
 
 export default connect(

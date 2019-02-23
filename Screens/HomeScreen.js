@@ -39,9 +39,10 @@ class HomeScreen extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.category) {
+    if (nextProps.auth.data) {
       this.props.navigation.navigate("Category");
     }
+    console.warn('Home Screen',nextProps.auth);
   }
   render() {
     return (
@@ -114,6 +115,17 @@ class HomeScreen extends Component {
             {FontIcons.mobile}
           </RkText>
           <RkText>Cleaning</RkText>
+        </RkButton>
+        <RkButton
+          rkType="square shadow"
+          style={{ ...this.itemSize }}
+          key={323}
+          onPress={() => this.props.navigation.navigate("OrderConfirm")}
+        >
+          <RkText style={styles.icon} rkType="primary moon xxlarge">
+            {FontIcons.mobile}
+          </RkText>
+          <RkText>View Orders</RkText>
         </RkButton>
       </ScrollView>
     );

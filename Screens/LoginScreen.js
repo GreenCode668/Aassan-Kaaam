@@ -65,17 +65,16 @@ class LoginScreen extends Component {
   };
 
   onLoginButtonPressed = () => {
-    const email = this.state.email
-    const password = this.state.password
-    this.props.login(email , password);
+    const email = this.state.email;
+    const password = this.state.password;
+    this.props.login(email, password);
   };
 
-  componentWillReceiveProps(nextProps){
-    console.warn(nextProps)
-    if(nextProps.auth.user){
-      this.props.navigation.navigate('Home')
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.user) {
+      this.props.navigation.navigate("Home");
     }
-}
+  }
 
   render() {
     return (
