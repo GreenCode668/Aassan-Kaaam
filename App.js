@@ -1,7 +1,7 @@
 import React from "react";
 import AppNavigator from "./navigator/appNavigator";
 import { StyleSheet, Text, View } from "react-native";
-import { bootstrap } from "./Config/bootstrap";
+import { bootstrap } from "./Config/bootstrap"; 
 import { data } from "./data";
 import { AppLoading, Font } from "expo";
 import { Provider } from "react-redux";
