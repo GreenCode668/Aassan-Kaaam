@@ -6,7 +6,7 @@ export class Ellipsis extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.dot} />
+        <View style={styles.dot} /> 
         <View style={styles.dot} />
         <View style={styles.dot} />
       </View>
